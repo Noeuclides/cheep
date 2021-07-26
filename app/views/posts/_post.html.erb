@@ -10,6 +10,26 @@
         <% end %>
         <%= link_to "#", class: "card-link", data: { reflex: "click->PostsReflex#like", id: post.id } do %>
             Like (<%= tag.span post.likes_count, id: "post-#{post.id}-likes" %>) 
+        <%= button_tag "Seleccionar contrato fijo", class: "white-turquoise-button w-3/5 text-sm inline-block hover:shadow-lg transition duration-300 ease-in-out", value: "tf" ,id: "tf",
+                      data: { reflex: "click->ExampleReflex#get_post",
+                              'reflex-root': '#main_contract_type' }%>
         <% end %>
+    </div>
+    <div id="main_contract_type"><%= @new_var %></div>
+    <div data-controller= "posts">
+        <input data-posts-target="comment" type="text">
+        <button data-action="click->posts#search">
+            Comment
+        </button>
+
+        <span data-posts-target="output">
+        <div data-posts-target="list" class="bg-cheep-100 text-cheep-200">
+            <%= @all_posts %>
+            <%-if @all_posts.present? %>
+                <%- @all_posts.each do |post| %>
+                    <p>BODY: <%= post.body %></p> 
+                <%- end %>
+            <%- end %>
+        </div>
     </div>
 </div>

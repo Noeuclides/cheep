@@ -4,12 +4,22 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
+import { Turbo, cable } from "@hotwired/turbo-rails"
+window.Turbo = Turbo
+import ahoy from 'ahoy.js';
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-
+import "chartkick"
+import "chart.js"
+import "choices.js"
+// import 'alpine-turbo-drive-adapter'
+import "alpinejs"
+//ActiveStorage.start()
 Rails.start()
-Turbolinks.start()
-ActiveStorage.start()
 
-import "controllers"
+import debounced from 'debounced'
+debounced.initialize()
+
+import "../controllers"
+import "../css/application.css"
+// import '../src/components'
